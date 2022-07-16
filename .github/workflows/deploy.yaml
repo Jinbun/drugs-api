@@ -21,9 +21,11 @@ jobs:
               login ${{secrets.HEROKU_EMAIL}}
               password ${{secrets.HEROKU_API_KEY}}
           machine git.heroku.com
+              login ${{secrets.HEROKU_EMAIL}}
+              password ${{secrets.HEROKU_API_KEY}}
           EOF
       - name: Add heroku remote
-        run: heroku git:remote -a ${{secrets.HEROKU_APP_NAME}}
+        run: heroku git:remote --app=${{secrets.HEROKU_APP_NAME}}
       - name: Setup heroku env
         run: heroku config:set DATABASE_URL=${{secrets.DATABASE_URL}}
       - name: push heroku to master
