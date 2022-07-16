@@ -13,8 +13,4 @@ class DatabaseComponent {
     private val database: MongoClient = KMongo.createClient(databaseUrl)
 
     fun drugsCollection(): MongoCollection<Drug> = database.getDatabase("drugs").getCollection()
-
-    init {
-        println("cek database $databaseUrl")
-    }
 }
