@@ -11,6 +11,5 @@ import org.springframework.stereotype.Component
 class DatabaseComponent {
     private val databaseUrl = System.getenv("DATABASE_URL")
     private val database: MongoClient = KMongo.createClient(databaseUrl)
-
     fun drugsCollection(): MongoCollection<Drug> = database.getDatabase("drugs").getCollection()
 }
