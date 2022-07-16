@@ -9,12 +9,8 @@ import org.springframework.stereotype.Component
 
 @Component
 class DatabaseComponent {
-    companion object {
-        private const val DB_URL = "mongodb+srv://ikbarajihwl:Pancasila12@cluster0.mmhtg.mongodb.net/?retryWrites=true&w=majority"
-    }
-
-    private val databaseUrl = System.getenv(DB_URL)
-    private val database: MongoClient = KMongo.createClient(DB_URL)
+    private val databaseUrl = System.getenv("DATABASE_URL")
+    private val database: MongoClient = KMongo.createClient(databaseUrl)
 
     fun drugsCollection(): MongoCollection<Drug> = database.getDatabase("drugs").getCollection()
 }
